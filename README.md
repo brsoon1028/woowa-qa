@@ -4,10 +4,10 @@
 
 | 문항 | 폴더 | 내용 |
 |---|---|---|
-| 1 | [problem1-strategy](./problem1-strategy) | "실시간 주문 현황" 테스트 자동화 전략 (서술) |
-| 2 | [problem2-stock-api](./problem2-stock-api) | B마트 재고 API 테스트 자동화 (Python, pytest) |
-| 3 | [problem3-e2e-review](./problem3-e2e-review) | E2E 코드 리뷰 및 리팩토링 (Kotlin, UIAutomator) |
-| 4 | [problem4-ai-tool](./problem4-ai-tool) | 기획 리뷰 보조 도구: 정책 공백 탐지와 TC 초안 생성 (설계, 프롬프트) |
+| 1 | [문제1](./문제1) | "실시간 주문 현황" 테스트 자동화 전략 (서술) |
+| 2 | [문제2](./문제2) | B마트 재고 API 테스트 자동화 (Python, pytest) |
+| 3 | [문제3](./문제3) | E2E 코드 리뷰 및 리팩토링 (Kotlin, UIAutomator) |
+| 4 | [문제4](./문제4) | 기획 리뷰 보조 도구: 정책 공백 탐지와 TC 초안 생성 (설계, 프롬프트) |
 
 네 문항은 하나의 관점으로 이어집니다. 자동화 대상을 판단 기준으로 고르고(문제 1), 테스트가 실제로 결함을 잡아내는지 검증하며(문제 2), 통과해도 믿을 수 없는 테스트를 걸러내고(문제 3), AI가 만든 결과물도 같은 방식으로 검증합니다(문제 4).
 
@@ -17,7 +17,7 @@
 
 ### 실행 방법
 
-서술형 문항이라 실행할 코드는 없습니다. [problem1-strategy/strategy.md](./problem1-strategy/strategy.md)에서 확인할 수 있습니다.
+서술형 문항이라 실행할 코드는 없습니다. [문제1/strategy.md](./문제1/strategy.md)에서 확인할 수 있습니다.
 
 ### 설계 의도
 
@@ -41,7 +41,7 @@
 Python 3.11 이상이 필요합니다.
 
 ```bash
-cd problem2-stock-api
+cd 문제2
 pip install -r requirements.txt
 pytest -v
 ```
@@ -55,8 +55,8 @@ pytest -v
 
 | 파일 | 역할 |
 |---|---|
-| [API_SPEC.md](./problem2-stock-api/API_SPEC.md) | 가상 API 명세와 정책 정의 |
-| [TEST_CASES.md](./problem2-stock-api/TEST_CASES.md) | 테스트 케이스 13건과 제외 케이스 |
+| [API_SPEC.md](./문제2/API_SPEC.md) | 가상 API 명세와 정책 정의 |
+| [TEST_CASES.md](./문제2/TEST_CASES.md) | 테스트 케이스 13건과 제외 케이스 |
 | `stub_server/app.py` | 명세대로 재고를 차감·복구하는 스텁 서버 |
 | `tests/conftest.py` | fixture: 테스트별 서버 기동, 사전조건 데이터 세팅 |
 | `tests/helpers.py` | 공통 설정값, 데이터 세팅·후속 검증 헬퍼 |
@@ -80,7 +80,7 @@ pytest -v
 
 ### 가정
 
-- 정책 판단(재고 초과 주문 전량 거부, 중복 취소 에러 응답, 운영자 수정 API 추가, 동시 요청은 도착 순서대로 처리)은 [API_SPEC.md](./problem2-stock-api/API_SPEC.md)에 정의했습니다.
+- 정책 판단(재고 초과 주문 전량 거부, 중복 취소 에러 응답, 운영자 수정 API 추가, 동시 요청은 도착 순서대로 처리)은 [API_SPEC.md](./문제2/API_SPEC.md)에 정의했습니다.
 - 스텁 서버의 처리 지연(50ms)은 실제 서버의 결제·DB 처리 시간을 흉내 내기 위한 값으로, 수십 ms 간격으로 도착한 두 요청의 처리가 겹치도록 요청 간격(20ms)보다 길게 잡았습니다.
 - "생성된 주문 수"는 스텁 서버 내부 저장소로 확인합니다. 주문 목록 조회 API가 과제에 없기 때문입니다.
 
@@ -92,8 +92,8 @@ pytest -v
 
 과제 안내에 따라 실행 환경 없이 설계 의도를 보여주는 코드로 작성했습니다. 앱 패키지명, resource-id, 테스트용 API는 예시 값입니다.
 
-- 문제점 분석, 개선 내용, Flaky 추적 순서: [problem3-e2e-review/review.md](./problem3-e2e-review/review.md)
-- 리팩토링 코드: [problem3-e2e-review/src](./problem3-e2e-review/src)
+- 문제점 분석, 개선 내용, Flaky 추적 순서: [문제3/review.md](./문제3/review.md)
+- 리팩토링 코드: [문제3/src](./문제3/src)
 
 ### 설계 의도
 
@@ -112,8 +112,8 @@ pytest -v
 
 설계 문서와 프롬프트 설계로 제출했습니다.
 
-- 도구 설계: [problem4-ai-tool/design.md](./problem4-ai-tool/design.md)
-- 단계별 프롬프트: [problem4-ai-tool/prompts](./problem4-ai-tool/prompts)
+- 도구 설계: [문제4/design.md](./문제4/design.md)
+- 단계별 프롬프트: [문제4/prompts](./문제4/prompts)
 
 ### 설계 의도
 
